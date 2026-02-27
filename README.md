@@ -8,8 +8,7 @@
 |Alejandro Orjuela      |66755              |Alejandro Orjuela
 |Omar Mendez Allan      |29678              |OmarMendezAllan
 |Yoset Danilo Buitrago  |12453              |yosetbuitrago12453
-=======
 |Alejandro Villa Osorio |42991              |alejandrov114
->>>>>>> a020ad6b841892df8ef8c6490685059928c72b20
+
 
 |Santiago Rios Valencia |46258              |RiosSantiago
