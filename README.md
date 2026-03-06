@@ -13,4 +13,4 @@
 |Juan Camilo cuervo 	|27109      		|juancuervo27109 <br>
 |Santiago cardona bernal|56652  	    	|santiagocardona56652 <br>
 |Jeisson David Guarin   |60163	            |JeikGuar
-|Aura Cristina Osorio   |58916              |AuraOsorioAgudelo
+|Aura Osorio Agudelo    |98916              |AuraOsorioAgudelo
