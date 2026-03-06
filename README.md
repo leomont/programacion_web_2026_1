@@ -10,6 +10,7 @@
 |Yoset Danilo Buitrago  |12453              |yosetbuitrago12453 <br>
 |Alejandro Villa Osorio |42991              |alejandrov114 <br>
 |Santiago Rios Valencia |46258              |RiosSantiago <br>
-|Juan Camilo cuervo 	  |27109      		    |juancuervo27109 <br>
-|Santiago cardona bernal|56652  	    	    |santiagocardona56652 <br>
-|Jeisson David Guarin |60163	|JeikGuar
+|Juan Camilo cuervo 	|27109      		|juancuervo27109 <br>
+|Santiago cardona bernal|56652  	    	|santiagocardona56652 <br>
+|Jeisson David Guarin   |60163	            |JeikGuar
+|Aura Osorio Agudelo    |98916              |AuraOsorioAgudelo
