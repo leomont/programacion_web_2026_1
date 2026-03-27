@@ -1,0 +1,632 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Press+Start+2P&display=swap");
+
+:root {
+  --c1: #1e1030;
+  --c2: #110820;
+  --b1: #6b3fa0;
+  --b2: #4a2870;
+  --g1: #cc44ff;
+  --g2: #7a1a9e;
+  --s1: #c8a0e0;
+  --m1: #9b30ff;
+  --d1: #ff44cc;
+  --j1: #e040fb;
+  --j2: #9c00d4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+@keyframes blink-text {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes screen-flicker {
+  0%,
+  100% {
+    background: #0eb4e6;
+  }
+  50% {
+    background: #0a2a3d;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at -50% 33%, #2d006e, #0d001a);
+}
+
+.arcade {
+  width: 36vmin;
+  height: 75vmin;
+  position: relative;
+}
+
+.arcade * {
+  position: absolute;
+  width: calc(100% - 2vmin);
+  left: 1vmin;
+}
+
+.top {
+  border-radius: 2vmin 2vmin 0 0;
+  background: var(--c1);
+  height: 11.5vmin;
+  border: 1vmin solid var(--b1);
+  border-bottom-width: 0;
+}
+
+.top::before {
+  border: 0.35vmin solid #9b30ff;
+  width: calc(100% - 1.5vmin);
+  left: 0.75vmin;
+  top: 0.75vmin;
+  height: calc(100% - 1.5vmin);
+  border-radius: 0.5vmin;
+}
+
+.top::after {
+  content: "ARCADE";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5.5vmin;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  background-image: linear-gradient(
+      180deg,
+      #fff0 0 50%,
+      #9b30ff99 0 53%,
+      #fff0 0 56%,
+      #7a00cc99 0 59%,
+      #fff0 0 62%,
+      #7a00cccf 0 64%,
+      var(--m1) 70%
+    ),
+    linear-gradient(1800deg, var(--d1) 40%, var(--m1));
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.top-screen {
+  width: calc(100% - 2vmin);
+  height: 3.3vmin;
+  top: 11.5vmin;
+  background: linear-gradient(
+      54deg,
+      #fff0 1.85vmin,
+      var(--b2) calc(1.85vmin + 1px) 2.7vmin,
+      var(--c2) calc(2.7vmin + 1px) 60%,
+      #fff0 0 100%
+    ),
+    linear-gradient(
+      -54deg,
+      #fff0 1.85vmin,
+      var(--b2) calc(1.85vmin + 1px) 2.7vmin,
+      var(--c2) calc(2.7vmin + 1px) 60%,
+      #fff0 0 100%
+    );
+}
+
+.screen {
+  background: linear-gradient(
+      93deg,
+      #fff0 0 3.25vmin,
+      var(--b1) calc(3.25vmin + 2px) 4.25vmin,
+      var(--c1) calc(4.25vmin + 1px) 60%,
+      #fff0 0 100%
+    ),
+    linear-gradient(
+      -93deg,
+      #fff0 0 3.25vmin,
+      var(--b1) calc(3.25vmin + 2px) 4.25vmin,
+      var(--c1) calc(4.25vmin + 1px) 60%,
+      #fff0 0 100%
+    );
+  width: 100%;
+  height: 22.5vmin;
+  top: 14.75vmin;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen::before {
+  border: 0.35vmin solid #9b30ff;
+  width: calc(100% - 10.5vmin);
+  height: calc(100% - 2.5vmin);
+  border-radius: 1.5vmin;
+}
+
+.glass {
+  width: calc(100% - 15vmin);
+  height: calc(100% - 6.5vmin);
+  background: var(--g2);
+  position: relative;
+  left: auto;
+  transform: scale(0.975);
+}
+
+.glass::before,
+.glass::after {
+  width: 1vmin;
+  height: 100%;
+  background: radial-gradient(
+    circle at 100.75vmin 50%,
+    var(--g1) 100vmin,
+    var(--g2) calc(100vmin + 1px) 100%
+  );
+  border-radius: 100% 0% 0% 100% / 50% 0% 0% 50%;
+  left: calc(-1vmin + 1px);
+}
+
+.glass::after {
+  border-radius: 0% 100% 100% 0% / 50% 50% 50% 50%;
+  left: inherit;
+  right: calc(-1vmin + 1px);
+  background: radial-gradient(
+    circle at -99.75vmin 50%,
+    var(--g1) 100vmin,
+    var(--g2) calc(100vmin + 1px) 100%
+  );
+}
+
+.glass span {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--g1);
+  border-radius: 1.25vmin;
+  animation: screen-flicker 1s steps(1) infinite;
+  overflow: hidden;
+}
+
+.glass span i {
+  position: absolute;
+  color: #fff;
+  font-family: "Press Start 2P", Arial, Helvetica, serif;
+  font-size: 3.25vmin;
+  text-align: center;
+  transform: scaleY(1.35);
+  font-style: normal;
+  animation: blink-text 0.9s steps(1) infinite;
+  z-index: 2;
+}
+
+.glass span i + i {
+  transform: rotate(180deg) scaleY(1.35);
+  bottom: 3.1vmin;
+}
+
+.glass span i::before,
+.glass span i::after {
+  width: 2vmin;
+  height: 11vmin;
+  left: -0.75vmin;
+  top: -2.6vmin;
+  border-radius: 100%;
+  transform: rotate(0deg);
+  filter: blur(0px);
+  border-left: 0.5vmin solid #ff88ff;
+  border-top: 0.6vmin solid #fff0;
+  opacity: 0.75;
+}
+
+.glass span i::after {
+  width: 20vmin;
+  height: 2vmin;
+  left: -1.25vmin;
+  top: -2.5vmin;
+  border-left: 0.75vmin solid #fff0;
+  border-top: 0.5vmin solid #ff88ff;
+}
+
+.glass span i + i::before {
+  height: 14vmin;
+  border-left-color: #5c0080;
+}
+
+.glass span i + i::after {
+  border-top-color: #5c0080;
+}
+
+.scanline {
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  background: rgba(255, 255, 255, 0.07);
+  animation: scanline 2s linear infinite;
+  z-index: 3;
+  left: 0;
+  border-radius: 0;
+}
+
+.glass span::before,
+.glass span::after {
+  left: 0;
+  width: 100%;
+  height: 1vmin;
+  background: radial-gradient(
+    circle at 50% 100.6vmin,
+    var(--g1) 100vmin,
+    var(--g2) calc(100vmin + 1px) 100%
+  );
+  border-radius: 50% 50% 0% 0% / 100% 100% 0% 0%;
+  top: calc(-1vmin + 1px);
+}
+
+.glass span::after {
+  border-radius: 0% 0% 50% 50% / 0% 0% 100% 100%;
+  top: inherit;
+  bottom: calc(-1vmin + 1px);
+  background: radial-gradient(
+    circle at 50% -99.6vmin,
+    var(--g1) 100vmin,
+    var(--g2) calc(100vmin + 1px) 100%
+  );
+}
+
+.bot-screen {
+  width: 100%;
+  height: 4.75vmin;
+  top: 36.85vmin;
+  left: 0;
+  background: linear-gradient(
+      116deg,
+      #fff0 1.9vmin,
+      var(--b2) calc(1.9vmin + 1px) 2.8vmin,
+      var(--c2) calc(2.8vmin + 1px) 60%,
+      #fff0 0 100%
+    ),
+    linear-gradient(
+      -116deg,
+      #fff0 1.9vmin,
+      var(--b2) calc(1.9vmin + 1px) 2.8vmin,
+      var(--c2) calc(2.8vmin + 1px) 60%,
+      #fff0 0 100%
+    );
+  background-repeat: no-repeat;
+}
+
+.bot-screen:before,
+.bot-screen:after {
+  width: 3vmin;
+  height: 1vmin;
+  background: #000;
+  border-radius: 100%;
+  left: 8.25vmin;
+  top: 2.1vmin;
+}
+
+.bot-screen:after {
+  left: 24.8vmin;
+  z-index: 0;
+}
+
+.joystick {
+  background: #00800000;
+  width: 100%;
+  height: 9vmin;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.joystick span {
+  background: #0000ff00;
+  width: 3.5vmin;
+  height: 7vmin;
+  left: 8vmin;
+  top: 0.5vmin;
+}
+
+.joystick span + span {
+  left: 24.5vmin;
+}
+
+.joystick span:before {
+  background: radial-gradient(
+      ellipse at 30% 27%,
+      #ffffffa8 0.1vmin,
+      #fff0 0.5vmin
+    ),
+    linear-gradient(
+      -106deg,
+      #fff0 0 3.5vmin,
+      var(--j1) calc(3.5vmin + 1px) 3.8vmin,
+      #fff0 calc(3.8vmin + 1px) 100%
+    ),
+    linear-gradient(
+      106deg,
+      #fff0 0 3vmin,
+      var(--j2) calc(3vmin + 1px) 3.8vmin,
+      #fff0 calc(3.8vmin + 1px) 100%
+    ),
+    radial-gradient(
+      circle at 33% 80%,
+      #fff0 0 1.5vmin,
+      var(--j2) calc(1.5vmin + 1px) 100%
+    ),
+    conic-gradient(from -15deg at 50% 8vmin, var(--j1) 0 30deg, #fff0 0 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 35%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, -100% 0, 0 0;
+  width: 3.5vmin;
+  top: 0;
+  left: 0;
+  height: 5.25vmin;
+  border-radius: 3vmin 3vmin 0 0;
+}
+
+.joystick span:after {
+  width: 1vmin;
+  height: 1.5vmin;
+  background: linear-gradient(
+    180deg,
+    var(--b2) 20%,
+    var(--s1) 50%,
+    var(--b1) 80%
+  );
+  bottom: 0.25vmin;
+  left: 1.25vmin;
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+}
+
+.buttons {
+  width: 9vmin;
+  height: 3vmin;
+  left: 13.5vmin;
+  top: 0.25vmin;
+}
+
+.buttons:before,
+.buttons:after {
+  background: #000;
+  width: 3vmin;
+  height: 1vmin;
+  border-radius: 100%;
+  left: 0.5vmin;
+  bottom: 0.125vmin;
+}
+
+.buttons:after {
+  left: 5.675vmin;
+  z-index: 0;
+}
+
+.buttons span {
+  background: radial-gradient(
+    circle at 50% -2.4vmin,
+    var(--j1) 0 3vmin,
+    var(--j2) calc(3vmin + 1px) 100%
+  );
+  width: 2.5vmin;
+  height: 1.3vmin;
+  bottom: 0.25vmin;
+  left: 0.8vmin;
+  border-radius: 40% 40% 50% 50% / 30% 30% 20% 20%;
+  z-index: 1;
+}
+
+.buttons span + span {
+  left: 5.85vmin;
+}
+
+.buttons span:before,
+.buttons span:after {
+  width: 0.85vmin;
+  height: 0.1vmin;
+  background: #fff8;
+  border-radius: 100%;
+  left: 0.25vmin;
+  top: 0.2vmin;
+  filter: blur(0.85px);
+}
+
+.bot {
+  background: linear-gradient(180deg, var(--c1) 4vmin, var(--m1) 2vmin);
+  width: 100%;
+  height: 32.25vmin;
+  bottom: 1.25vmin;
+  left: 0;
+  border-radius: 0 0 1vmin 1vmin;
+  border: 1vmin solid var(--b1);
+  border-top-width: 0;
+}
+
+.bot:before {
+  border: 0.35vmin solid var(--c1);
+  width: calc(100% - 3.25vmin);
+  height: calc(100% - 7.25vmin);
+  border-radius: 1.5vmin;
+  left: 1.75vmin;
+  bottom: 1.75vmin;
+  z-index: 1;
+}
+
+.bot::after {
+  width: calc(100% - 1vmin);
+  bottom: -2.2vmin;
+  background: var(--c1);
+  height: 1.25vmin;
+  left: 0.5vmin;
+  border-radius: 0 0 1vmin 1vmin;
+}
+
+.draw {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.draw:before {
+  --oval: 0 0 var(--d1);
+  background: var(--d1);
+  width: 25vmin;
+  height: 2.35vmin;
+  border-radius: 2vmin;
+  left: 22.5vmin;
+  top: 22vmin;
+  transform: rotate(45deg);
+  box-shadow: 6vmin 2.25vmin var(--oval), -4vmin 4.5vmin var(--oval),
+    2vmin 6.75vmin var(--oval), -4vmin 9vmin var(--oval),
+    7vmin 11.25vmin var(--oval), 2vmin 13.5vmin var(--oval);
+}
+
+.draw:after {
+  --oval: 0 0 var(--d1);
+  --oval2: 0 -0.1vmin var(--m1);
+  background: var(--d1);
+  width: 2.95vmin;
+  height: 2.35vmin;
+  border-radius: 2vmin;
+  left: 17vmin;
+  top: 12vmin;
+  transform: rotate(45deg);
+  box-shadow: 6vmin 9vmin var(--oval), 14vmin 6.65vmin var(--oval2),
+    9vmin 2.15vmin var(--oval2), 13vmin -2.35vmin var(--oval2);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.box {
+  background: #1e1030;
+  width: 9.25vmin;
+  height: 10.25vmin;
+  left: 3.5vmin;
+  top: 7.25vmin;
+  border-radius: 0.5vmin;
+}
+
+.coins {
+  --dot: #6b3fa0 0.2vmin, #fff0 calc(0.2vmin + 1px) 100%;
+  background: radial-gradient(circle at 0.65vmin 0.55vmin, var(--dot)),
+    radial-gradient(circle at 3vmin 0.55vmin, var(--dot)),
+    radial-gradient(circle at 0.65vmin 7.15vmin, var(--dot)),
+    radial-gradient(circle at 3vmin 7.15vmin, var(--dot)), #8855cc;
+  width: 3.5vmin;
+  height: 7.75vmin;
+  top: 1.25vmin;
+  left: 1.25vmin;
+  border-radius: 0.5vmin;
+}
+
+.button {
+  width: 2.25vmin;
+  height: 2.25vmin;
+  border: 0.5vmin solid var(--c2);
+  border-radius: 100%;
+  left: 5.75vmin;
+  top: 1.5vmin;
+  background: radial-gradient(
+    circle at 1.1vmin 0.45vmin,
+    var(--j1) 0 0.7vmin,
+    #fff 1.25vmin 100%
+  );
+}
+
+.button::before {
+  width: 2.3vmin;
+  height: 1vmin;
+  background: var(--c2);
+  left: -4.25vmin;
+  top: 2.9vmin;
+  border-radius: 0.25vmin;
+}
+
+.slot {
+  background: var(--c2);
+  width: 1.35vmin;
+  height: 2.35vmin;
+  top: 0.6vmin;
+  left: 1.1vmin;
+  border-radius: 0.3vmin;
+  border: 0.2vmin solid #cc88ff;
+  border-width: 0.35vmin 0.55vmin;
+}
+
+.slot:before {
+  background: #cc88ff;
+  width: 1.25vmin;
+  height: 1.25vmin;
+  top: 5vmin;
+  left: -0.5vmin;
+  border-radius: 0 0 0.2vmin 0.2vmin;
+}
+
+.slot:after {
+  background: #000;
+  width: 0.5vmin;
+  height: 2vmin;
+  top: 4vmin;
+  left: -0.1vmin;
+  border-radius: 0.2vmin;
+  border: 0;
+}
+
+.box::before,
+.box::after,
+.coins::before,
+.coins::after {
+  width: 0.5vmin;
+  height: 0.5vmin;
+  border-radius: 100%;
+  background: radial-gradient(circle at 0 0, #ddaaff, #3d0066);
+  left: 0.5vmin;
+  top: 0.5vmin;
+}
+
+.box::after {
+  left: 8.35vmin;
+}
+.coins::before {
+  left: -0.7vmin;
+  top: 8vmin;
+}
+.coins::after {
+  left: 7vmin;
+  top: 8vmin;
+}
