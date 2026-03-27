@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Bombilla Neón</title>
+    <style>
+        /* Variables de color para facilitar los ajustes */
+        :root {
+            --bg-color: #03040c; /* Azul/Negro muy oscuro del fondo */
+            --neon-color: #ba93ff; /* Morado neón */
+            --dark-gray: #222228; /* Gris oscuro dentro de la bombilla */
+            --faint-circle: #212230; /* Círculo tenue de fondo */
+        }
+
+        /* Reseteo básico y centrado en la pantalla */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilos para el contenedor SVG */
+        svg {
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Clase base para todo lo que brilla con color neón */
+        .neon {
+            stroke: var(--neon-color);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            /* El filtro drop-shadow crea el efecto de luz/resplandor */
+            filter: drop-shadow(0 0 3px rgba(186, 147, 255, 0.8)) 
+                    drop-shadow(0 0 10px rgba(186, 147, 255, 0.3));
+        }
+
+        /* Estilos específicos */
+        .faint-circle {
+            stroke: var(--faint-circle);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .inner-dark {
+            fill: var(--dark-gray);
+            stroke: none;
+        }
+
+        .string {
+            stroke-dasharray: 4 4; /* Crea el efecto de línea discontinua */
+            stroke-width: 2;
+        }
+
+        .ring {
+            fill: var(--bg-color); /* Centro transparente (color de fondo) */
+            stroke-width: 2.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- El viewBox define el sistema de coordenadas interno (0 a 200) -->
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        
+        <!-- 1. Círculo grande tenue de fondo -->
+        <circle class="faint-circle" cx="100" cy="100" r="85" />
+
+        <!-- 2. Forma oscura dentro del cristal (Bulbo interior) -->
+        <ellipse class="inner-dark" cx="100" cy="85" rx="16" ry="15" />
+
+        <!-- 3. Contorno principal de la bombilla (Cristal y Base) -->
+        <!-- M: Mover a | A: Arco | C: Curva Bezier | L: Línea recta -->
+        <path class="neon" d="
+            M 75 70 
+            A 25 25 0 1 1 125 70 
+            C 125 85, 115 95, 108 95 
+            L 108 115 
+            L 92 115 
+            L 92 95 
+            C 85 95, 75 85, 75 70
+        " />
+
+        <!-- 4. Líneas horizontales de la rosca/base (pegadas a la izquierda) -->
+        <path class="neon" d="M 92 100 L 100 100" />
+        <path class="neon" d="M 92 105 L 100 105" />
+        <path class="neon" d="M 92 110 L 100 110" />
+
+        <!-- 5. Cuerda discontinua colgando -->
+        <path class="neon string" d="M 108 115 L 102 145" />
+
+        <!-- 6. Pequeño anillo/círculo al final de la cuerda -->
+        <circle class="neon ring" cx="101.5" cy="148" r="3" />
+
+    </svg>
+
+</body>
+</html>
