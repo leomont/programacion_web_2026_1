@@ -1,0 +1,232 @@
+body {
+  --white: #FFFFFF;
+  --black: #0c0c0c;
+	--green: #BBF451;
+	--red: #ff0000;
+  background: #A52019;
+}
+
+body *, body *::before, body *::after {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* in the center */
+.dog {
+  top: 50%; left: 50%;
+  width: 420px; height: 475px;
+  border-radius: 0 210px 90px 0;
+  mask: radial-gradient(circle, transparent 12px, var(--black) 0) -132px -27px;
+  translate: -50% -50%;
+  --noise: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter" color-interpolation-filters="linearRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" numOctaves="1000" seed="1000" stitchTiles="stitch" x="0" y="0" width="100%" height="100%" result="turbulence1"/><feDisplacementMap in="SourceGraphic" in2="turbulence1" scale="300" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" result="displacementMap"/><feComposite in="displacementMap" in2="SourceAlpha" operator="in" x="0%" y="0%" width="100%" height="100%" result="composite"/></filter></svg>#filter');
+}
+/* body shape */
+.dog::before {
+  width: 100%; height: 100%;
+  background: 
+    linear-gradient(270deg, var(--black) 253px, transparent 0), 
+    linear-gradient(180deg, var(--black) 209px, transparent 0);
+  border-radius: 210px 210px 90px 0;
+}
+/* butt */
+.dog::after {
+  top: 125px; left: 68px;
+  width: 22px; height: 22px;
+  background: 
+    linear-gradient(90deg, var(--white)) 0px center / 100% 1px no-repeat, 
+    linear-gradient(var(--white)) center 0px / 1px 100% no-repeat;
+  rotate: 45deg;
+}
+/* tail with a lot of gradients */
+.dog__tail {
+  top: 17px; left: 58px;
+  width: 42px; height: 88px;
+  background: 
+    linear-gradient(180deg, var(--white) 46px, var(--black) 0) 41px 15px / 1px 73px, 
+    linear-gradient(110deg, transparent 11px, var(--black) 0) 24px 5px / 17px 83px, 
+    linear-gradient(119deg, transparent 27.4px, var(--black) 0) 0px 3px / 36px 52px, 
+    /* circle sides */
+    radial-gradient(circle closest-side, var(--black) 100%, transparent 0) 31px 0px / 10px 10px, 
+    radial-gradient(circle closest-side, var(--black) 100%, transparent 0) 0px 43px / 45px 45px;
+  background-repeat: no-repeat;
+  /* border of a complex shape */
+  filter: drop-shadow(0px 1px 0 var(--white)) drop-shadow(-1px 0px 0 var(--white)) drop-shadow(0px -3px 0 var(--white));
+}
+/* a lot of gradients */
+.dog__leg {
+  top: 200px; left: 0;
+  width: 66px; height: 175px;
+  background: 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 45px 145px / 12px 12px no-repeat, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 34px 154px / 12px 12px no-repeat, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 19px 154px / 12px 12px no-repeat, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 8px 145px / 12px 12px no-repeat, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) center 127px / 24px 24px no-repeat, 
+    /* wavew */
+    radial-gradient(closest-side circle at 50% 29px, transparent 22px, var(--black) 0) -23px 70px / 36px 10px repeat-x, 
+    radial-gradient(closest-side circle at 50% 33%, var(--black) 24px, transparent 0) -41px 45px / 36px 36px repeat-x, 
+    linear-gradient(0deg, var(--white) 110px, var(--black) 0);
+  border-radius: 0 0 40px 40px;
+  border: 1px solid var(--black);
+  /* copy */
+  -webkit-box-reflect: right 24px;
+}
+/* copy of a leg */
+.dog__hand {
+  top: 409px; left: 297px;
+  width: 66px; height: 175px;
+  background: 
+    linear-gradient(var(--black)) center bottom / 1px 18px no-repeat, 
+    linear-gradient(var(--black)) 48px bottom / 1px 18px no-repeat, 
+    linear-gradient(var(--black)) 16px bottom / 1px 18px no-repeat, 
+    radial-gradient(closest-side circle at 50% 29px, transparent 22px, var(--black) 0) -23px 70px / 36px 10px repeat-x, 
+    radial-gradient(closest-side circle at 50% 33%, var(--black) 24px, transparent 0) -41px 45px / 36px 36px repeat-x, 
+    linear-gradient(0deg, var(--white) 110px, var(--black) 0);
+  border-radius: 0 0 40px 40px;
+  border: 1px solid var(--black);
+  /* only this changed */
+  rotate: 90deg;
+  transform-origin: top left;
+}
+/* second hand */
+.dog__hand::before {
+  top: -77px; left: -1px;
+  width: inherit; height: inherit;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+}
+/* head starts with the brow */
+.dog__head {
+  top: 273px; left: 220px;
+  width: 74px; height: 90px;
+  border: 1px solid;
+  border-color: var(--white) transparent transparent var(--white);
+  border-radius: 28px 0 0;
+}
+/* ear */
+.dog__head::before {
+  top: -105px; left: 109px;
+  width: 82px; height: 167px;
+  background: 
+    linear-gradient(var(--black)) 0 123px / 30px 40px, 
+    linear-gradient(var(--white)) 0 9px / 1px 102px, 
+    linear-gradient(62.7deg, var(--black) 69px, var(--white) 69px 70px, transparent 0) 1px 7px / 81px 117px, 
+    radial-gradient(farthest-side, var(--black) calc(100% - 1px), var(--white) calc(100% - 1px) 100%, transparent 0) right bottom / 64px 64px, 
+    radial-gradient(farthest-side, var(--black) calc(100% - 1px), var(--white) calc(100% - 1px) 100%, transparent 0) 0 0 / 20px 20px;
+  background-repeat: no-repeat;
+  transform-origin: top left;
+  rotate: 20deg;
+}
+/* ear */
+.dog__head::after {
+  top: -105px; left: -58px;
+  width: 82px; height: 172px;
+  background: 
+    linear-gradient(62.7deg, var(--black) 56px, var(--white) 56px 57px, transparent 0) 1px 8px / 81px 88px, 
+    linear-gradient(90deg, var(--white) 1px, var(--black) 0) 0 9px / 71px 129px, 
+    radial-gradient(farthest-side, var(--black) calc(100% - 1px), var(--white) calc(100% - 1px) 100%, transparent 0) left bottom / 64px 64px, 
+    radial-gradient(farthest-side, var(--black) calc(100% - 1px), var(--white) calc(100% - 1px) 100%, transparent 0) 0 0 / 20px 20px;
+  background-repeat: no-repeat;
+  transform-origin: top left;
+  rotate: 8deg;
+}
+.dog__eye {
+  top: 40px; left: -54px;
+  width: 56px; height: 46px;
+  background: radial-gradient(circle at 30% 70%, var(--black) 50%, var(--white) 0);
+  border-radius: 40px;
+  border: 1px solid var(--white);
+  z-index: 1;
+}
+/* copy of an eye */
+.dog__eye::before {
+  top: -1px; left: 63px;
+  width: inherit; height: inherit;
+  background: inherit;
+  border-radius: 40px;
+  border: inherit;
+}
+/* taunge */
+.dog__face {
+  top: 120px; left: -70px;
+  width: 28px; height: 66px;
+  /* a line */
+  background: linear-gradient(var(--black)) center 0 / 1px 36px no-repeat, var(--red);
+  border: 1px solid var(--black);
+  border-radius: 20px;
+}
+/* a lot of gradients */
+.dog__face::before {
+  top: -37px; left: -40px;
+  width: 106px; height: 74px;
+  background: 
+    /* nose */
+    conic-gradient(from -45deg at 50% 100%, var(--black) 90deg, transparent 0) center 2px / 50px 28px, 
+    /* dots */
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 18px 54px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 31px 54px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 84px 54px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 72px 54px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 65px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 37px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 13px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 89px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 78px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 24px 43px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 31px 33px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 72px 33px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 84px 33px / 4px 4px, 
+    radial-gradient(farthest-side, var(--black) 100%, transparent 0) 18px 33px / 4px 4px, 
+    /* sides */
+    linear-gradient(var(--black)) center 21px / 1px 32px, 
+    linear-gradient(var(--white)) 5px 0px / 89px 52px, 
+    /* shape circles */
+    radial-gradient(farthest-side, var(--white) calc(100% - 1px), var(--black) calc(100% - 1px) 100%, transparent 0) 52px bottom / 55px 55px, 
+    radial-gradient(farthest-side, var(--white) calc(100% - 1px), var(--black) calc(100% - 1px) 100%, transparent 0) -1px bottom / 55px 55px;
+  background-repeat: no-repeat;
+  mask: 
+    linear-gradient(45deg, var(--black) 64px, transparent 0) right 0 / 50% 100% no-repeat, 
+    linear-gradient(-45deg, var(--black) 64px, transparent 0) 0 0 / 50% 100% no-repeat;
+}
+.ball {
+  bottom: 0; left: 0;
+  width: 82px; aspect-ratio: 1;
+  background: 
+    radial-gradient(farthest-side circle, var(--white) calc(82% - 1px), var(--black) calc(82% - 1px) 82%, var(--green) 0) -123px center / 200%;
+  border-radius: 50%;
+}
+.dog__shadow1 {
+  top: 170px; left: 190px;
+  height: 104px; width: 150px;
+  background: radial-gradient(at 100% 100%, var(--white), transparent 70%);
+  filter: var(--noise);
+}
+.dog__shadow2 {
+  top: 0; right: 0;
+  width: 50%; aspect-ratio: 1;
+  background: linear-gradient(45deg, transparent 30%, var(--white));
+  filter: var(--noise);
+}
+.dog__shadow3 {
+  top: 260px; left: 0;
+  width: 66px; height: 115px;
+  background: linear-gradient(90deg, transparent 30%, var(--black));
+  border-radius: 0 0 34px;
+  filter: var(--noise);
+}
+.dog__shadow4 {
+  top: 260px; left: 90px;
+  width: 66px; height: 115px;
+  background: linear-gradient(90deg, transparent 30%, var(--black));
+  border-radius: 0 0 34px;
+  filter: var(--noise);
+}
+.dog__shadow5 {
+  bottom: 0; left: 123px;
+  width: 206px; height: 66px;
+  background: linear-gradient(180deg, transparent 40%, var(--black));
+  border-radius: 0 0 0 34px;
+  filter: var(--noise);
+}
