@@ -13,3 +13,4 @@
 |Juan Camilo cuervo 	  |27109      		    |juancuervo27109 <br>
 |Santiago cardona bernal|56652  	    	    |santiagocardona56652 <br>
 |Jeisson David Guarin |60163	|JeikGuar
+|Miguel Angel Victoria |59385   |miguelvictoria59385-crypto <br>
